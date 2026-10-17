@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Image d'exemple : à supprimer une fois les vraies photos ajoutées -->
+  <defs>
+    <linearGradient id="soir" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9c99a"/>
+      <stop offset="1" stop-color="#f4ead3"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#soir)"/>
+  <rect y="440" width="800" height="160" fill="#6f8c45"/>
+  <polygon points="400,170 230,470 570,470" fill="#f4ead3" stroke="#5a4632" stroke-width="4"/>
+  <polygon points="400,170 345,470 455,470" fill="#7a1c1c"/>
+  <polygon points="400,330 375,470 425,470" fill="#2b1e12"/>
+  <line x1="400" y1="170" x2="400" y2="100" stroke="#5a4632" stroke-width="6"/>
+  <polygon points="400,100 470,115 400,130" fill="#b8903f"/>
+  <text x="400" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#2b1e12">Photo d'exemple, à remplacer</text>
+</svg>

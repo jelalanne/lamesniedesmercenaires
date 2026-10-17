@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Photo à venir">
+  <!-- Photo de profil provisoire d'un membre du bureau -->
+  <rect width="200" height="200" fill="#e3d1aa"/>
+  <path d="M100 28 C72 28 56 50 56 78 C56 104 74 120 100 120 C126 120 144 104 144 78 C144 50 128 28 100 28 Z" fill="#8a6f50"/>
+  <path d="M28 200 C28 148 60 126 100 126 C140 126 172 148 172 200 Z" fill="#8a6f50"/>
+</svg>

@@ -1,0 +1,7 @@
+# Fichiers système Windows / macOS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Fichiers temporaires du script de préparation des photos
+*.tmp

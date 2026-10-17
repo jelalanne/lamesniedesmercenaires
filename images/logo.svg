@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100" height="120" role="img" aria-label="Blason de La Mesnie Des Mercenaires">
+  <!-- Blason provisoire : écu bordeaux et deux flèches croisées. Remplacer ce fichier par le vrai logo (même nom). -->
+  <defs>
+    <g id="fleche">
+      <line x1="28" y1="92" x2="66.5" y2="39.5" stroke="#f4ead3" stroke-width="3" stroke-linecap="round"/>
+      <polygon points="72,32 70.15,43.05 62.05,37.15" fill="#d9b968"/>
+      <polygon points="33.9,83.9 33.25,93.35 29.2,90.4" fill="#f4ead3"/>
+      <polygon points="33.9,83.9 25.15,87.45 29.2,90.4" fill="#f4ead3"/>
+    </g>
+  </defs>
+  <path d="M10 8 H90 V55 C90 84 72 103 50 114 C28 103 10 84 10 55 Z" fill="#7a1c1c" stroke="#b8903f" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M17 15 H83 V55 C83 80 67 96 50 106 C33 96 17 80 17 55 Z" fill="none" stroke="#d9b968" stroke-width="1.2" opacity="0.7"/>
+  <use href="#fleche"/>
+  <use href="#fleche" transform="translate(100 0) scale(-1 1)"/>
+</svg>

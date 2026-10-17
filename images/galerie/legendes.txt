@@ -1,0 +1,12 @@
+# Légendes des photos de la galerie (fichier facultatif).
+#
+# Une ligne par photo :   nom-du-fichier.jpg | Texte de la légende
+#
+# Sans ligne ici, la légende est déduite du nom du fichier :
+#   "2025-06-tournoi-de-provins.jpg"  devient  "Tournoi de provins".
+# Les lignes qui commencent par # sont ignorées.
+# Après modification, lancer apercu.bat ou deployer.bat.
+
+exemple-1-cible.svg | Une cible d'archerie (image d'exemple)
+exemple-2-campement.svg | Notre campement (image d'exemple)
+exemple-3-tournoi.svg | Le pas de tir d'un tournoi (image d'exemple)

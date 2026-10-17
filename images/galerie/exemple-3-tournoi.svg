@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Image d'exemple : à supprimer une fois les vraies photos ajoutées -->
+  <rect width="800" height="600" fill="#d7e4ea"/>
+  <rect y="360" width="800" height="240" fill="#86a35a"/>
+  <g stroke="#3b2a1a" stroke-width="3">
+    <circle cx="190" cy="330" r="45" fill="#f4ead3"/>
+    <circle cx="190" cy="330" r="25" fill="#3a6ea5"/>
+    <circle cx="190" cy="330" r="10" fill="#b3261e"/>
+    <circle cx="400" cy="330" r="45" fill="#f4ead3"/>
+    <circle cx="400" cy="330" r="25" fill="#3a6ea5"/>
+    <circle cx="400" cy="330" r="10" fill="#b3261e"/>
+    <circle cx="610" cy="330" r="45" fill="#f4ead3"/>
+    <circle cx="610" cy="330" r="25" fill="#3a6ea5"/>
+    <circle cx="610" cy="330" r="10" fill="#b3261e"/>
+  </g>
+  <g fill="#7a1c1c" stroke="#b8903f" stroke-width="3">
+    <polygon points="120,90 200,90 200,190 160,165 120,190"/>
+    <polygon points="360,90 440,90 440,190 400,165 360,190"/>
+    <polygon points="600,90 680,90 680,190 640,165 600,190"/>
+  </g>
+  <line x1="60" y1="480" x2="740" y2="480" stroke="#f4ead3" stroke-width="5" stroke-dasharray="20 12"/>
+  <text x="400" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#2b1e12">Photo d'exemple, à remplacer</text>
+</svg>
