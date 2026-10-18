@@ -75,7 +75,7 @@
       <header class="entete">
         <div class="entete-interieur">
           <a class="marque" href="index.html">
-            <img src="images/logo.svg" alt="" width="44" height="53">
+            <img src="images/logo.jpg" alt="" width="53" height="53">
             <span>${echapper(nomSite)}</span>
           </a>
           <button type="button" class="menu-bouton" aria-expanded="false" aria-controls="menu-principal">&#9776; Menu</button>

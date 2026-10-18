@@ -65,7 +65,7 @@ SiteWeb/
 │       ├── galerie-data.js ← liste des photos (GÉNÉRÉE par le script, ne pas modifier)
 │       └── contact.js      ← envoi du formulaire de contact
 ├── images/
-│   ├── logo.svg            ← blason (aussi utilisé comme icône d'onglet)
+│   ├── logo.jpg            ← emblème (aussi utilisé comme icône d'onglet)
 │   ├── bureau/             ← photos de profil des membres du bureau
 │   └── galerie/            ← photos de la galerie
 │       ├── legendes.txt    ← légendes des photos (facultatif)
@@ -132,7 +132,7 @@ La galerie se met à jour **toute seule** à partir du contenu du dossier `image
 
 ### Logo et couleurs
 
-- **Logo** : remplacer `images/logo.svg` par le vrai blason en gardant le même nom. Pour un logo en `.png`, remplacer `images/logo.svg` par `images/logo.png` dans toutes les pages `.html` et dans `assets/js/commun.js`.
+- **Logo** : remplacer `images/logo.jpg` par la nouvelle image en gardant le même nom. Pour un autre format (`.png`, `.svg`), changer `images/logo.jpg` dans toutes les pages `.html` et dans `assets/js/commun.js`.
 - **Couleurs et polices** : variables en haut de [assets/css/style.css](assets/css/style.css) (bloc `:root`).
 
 ## Formulaire de contact (Web3Forms)
@@ -199,18 +199,19 @@ Get-Help .\scripts\deployer.ps1 -Full                            # aide complèt
 
 - **Préparation automatique des photos** (`scripts/deployer.ps1`) : réduction des photos trop grandes (1600 px pour la galerie, 500 px pour le bureau, réglables en haut du script), redressement des photos prises téléphone tourné, suppression des métadonnées (dont la position GPS) des photos réduites, création des miniatures et suppression de celles des photos retirées.
 - **Galerie générée automatiquement** : le script écrit la liste des photos dans `assets/js/galerie-data.js`, avec les légendes de `legendes.txt` ou déduites du nom de fichier. La visionneuse s'utilise à la souris, au doigt ou au clavier (flèches, Échap).
-- **Objet du message présélectionné** : un lien vers `contact.html?objet=prestation` (ou `adhesion`, `tournoi`, `autre`) présélectionne l'objet du formulaire. C'est le cas des boutons « Demander un devis » et « Nous écrire ». Les valeurs possibles sont les attributs `data-raccourci` du menu « Objet » dans `contact.html`.
+- **Objet du message présélectionné** : un lien vers `contact.html?objet=prestation` (ou `adhesion`, `informations`, `autre`) présélectionne l'objet du formulaire. C'est le cas des boutons « Demander un devis » et « Nous écrire ». Les valeurs possibles sont les attributs `data-raccourci` du menu « Objet » dans `contact.html`.
 - **Protection anti-spam** du formulaire : champ piège invisible (filtré par Web3Forms).
 - **En-tête et pied de page communs** : générés par `assets/js/commun.js`, donc une modification du menu ou des réseaux s'applique à toutes les pages.
 - **Mentions légales** et **page 404** personnalisée.
 - **Affichage mobile** : mise en page adaptée aux petits écrans, menu repliable.
+- **Agrandissement sur grand écran** : à partir de 1140 px de large, tout le site s'affiche à 150 % (comme un zoom navigateur). Le facteur se règle avec la variable `--zoom` dans `assets/css/style.css`.
 
 ## Avant la première mise en ligne
 
 - [ ] Remplacer tous les passages entre crochets `[…]` (`association.html`, `prestations.html`, `mentions-legales.html`).
 - [ ] Renseigner les vrais liens des réseaux sociaux et la clé Web3Forms dans `assets/js/config.js`.
 - [ ] Ajouter les photos du bureau et de la galerie, supprimer les images d'exemple.
-- [ ] Remplacer le logo provisoire `images/logo.svg`.
+- [x] Remplacer le logo provisoire (fait : `images/logo.jpg`).
 - [ ] Relire les textes d'exemple de l'accueil, de l'association et des prestations.
 
 ## Limites connues

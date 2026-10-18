@@ -21,6 +21,20 @@
   --largeur-max: 1040px;
   --rayon: 6px;
   --ombre: 0 2px 8px rgba(43, 30, 18, 0.18);
+  /* Agrandissement global du site (équivaut au zoom navigateur) */
+  --zoom: 1;
+}
+
+/* Sur grand écran, tout le site est affiché à 150 %. Les unités vw/vh
+   sont divisées par --zoom pour rester relatives à la vraie fenêtre. */
+@media (min-width: 1140px) {
+  :root {
+    --zoom: 1.5;
+  }
+
+  html {
+    zoom: var(--zoom);
+  }
 }
 
 /* --- Base ---------------------------------------------------------------- */
@@ -37,7 +51,7 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
+  min-height: calc(100vh / var(--zoom));
   display: flex;
   flex-direction: column;
   font-family: var(--police-texte);
@@ -246,7 +260,9 @@ h3 {
 }
 
 .marque img {
-  width: 44px;
+  width: 60px;
+  height: auto;
+  border-radius: 50%;
 }
 
 .menu-principal ul {
@@ -406,7 +422,9 @@ h3 {
 }
 
 .banniere-logo {
-  width: 130px;
+  width: 240px;
+  height: auto;
+  border-radius: 50%;
   filter: drop-shadow(0 3px 4px rgba(43, 30, 18, 0.35));
 }
 
@@ -544,8 +562,8 @@ h3 {
 
 /* Visionneuse plein écran (élément <dialog>) */
 .visionneuse {
-  max-width: min(94vw, 1200px);
-  max-height: 94vh;
+  max-width: min(94vw / var(--zoom), 1200px);
+  max-height: calc(94vh / var(--zoom));
   padding: 0;
   overflow: hidden;
   color: var(--parchemin);
@@ -568,7 +586,7 @@ h3 {
 .visionneuse img {
   display: block;
   max-width: 100%;
-  max-height: calc(94vh - 4.5rem);
+  max-height: calc(94vh / var(--zoom) - 4.5rem);
   object-fit: contain;
 }
 

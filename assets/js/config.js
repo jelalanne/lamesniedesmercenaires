@@ -20,7 +20,7 @@ window.SITE_CONFIG = {
 
   /** Liens vers les réseaux sociaux, affichés en pied de page et sur la page Contact. */
   reseaux: [
-    { nom: "Facebook", url: "https://www.facebook.com/" }, // À REMPLACER par la page de l'asso
-    { nom: "Instagram", url: "https://www.instagram.com/" }, // À REMPLACER par le compte de l'asso
+    { nom: "Facebook", url: "https://www.facebook.com/people/La-Mesnie-Des-Mercenaires/61595573398944/" },
+    { nom: "Instagram", url: "https://www.instagram.com/lamesniedesmercenaires/" },
   ],
 };
