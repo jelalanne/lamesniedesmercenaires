@@ -510,22 +510,32 @@ h3 {
 
 /* --- Galerie ------------------------------------------------------------- */
 
+/* Galerie : vignettes de même hauteur, largeur selon le format de la photo
+   (aucun recadrage), centrées et réparties sur plusieurs lignes */
 .galerie {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
   gap: 1.2rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+.galerie li {
+  max-width: 100%;
+}
+
+/* La légende prend la largeur de la photo au lieu de l'élargir */
 .galerie figure {
-  margin: 0;
+  display: table;
+  margin: 0 auto;
 }
 
 .vignette {
   display: block;
-  width: 100%;
+  max-width: 100%;
   padding: 0;
   overflow: hidden;
   background: var(--parchemin-fonce);
@@ -538,10 +548,17 @@ h3 {
 
 .vignette img {
   display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  height: 220px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
   transition: transform 0.3s;
+}
+
+@media (max-width: 760px) {
+  .vignette img {
+    height: 160px;
+  }
 }
 
 .vignette:hover img {
@@ -549,6 +566,8 @@ h3 {
 }
 
 .galerie figcaption {
+  display: table-caption;
+  caption-side: bottom;
   margin-top: 0.35rem;
   font-size: 0.95rem;
   text-align: center;
