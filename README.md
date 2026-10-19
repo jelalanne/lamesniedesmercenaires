@@ -2,8 +2,8 @@
 
 Site vitrine de **La Mesnie Des Mercenaires**, association de reconstitution médiévale spécialisée dans l'archerie.
 
-- **Adresse du site :** https://jelalanne.github.io/lamesniedesmercenaires/
-- **Dépôt GitHub :** https://github.com/jelalanne/lamesniedesmercenaires
+- **Adresse du site :** https://lamesniedesmercenaires.fr/
+- **Dépôt GitHub :** https://github.com/lamesniedesmercenaires/lamesniedesmercenaires
 
 Le site est volontairement simple : de simples pages HTML/CSS et un peu de JavaScript, sans framework, sans compilation et sans base de données. Tout est gratuit :
 
@@ -164,16 +164,16 @@ Pour changer l'adresse de réception, créer une nouvelle clé avec la nouvelle 
    git init -b main
    git add --all
    git commit -m "Première version du site"
-   git remote add origin https://github.com/jelalanne/lamesniedesmercenaires.git
+   git remote add origin https://github.com/lamesniedesmercenaires/lamesniedesmercenaires.git
    git push -u origin main
    ```
    Au premier envoi, une fenêtre de connexion à GitHub s'ouvre : se connecter avec le compte propriétaire du dépôt.
 3. **Activer GitHub Pages** : sur la page du dépôt, *Settings* > *Pages* > *Build and deployment* > *Source* : **Deploy from a branch**, *Branch* : **main** et **/ (root)**, puis *Save*.
-4. Au bout d'une à deux minutes, le site est visible à l'adresse https://jelalanne.github.io/lamesniedesmercenaires/.
+4. Au bout d'une à deux minutes, le site est visible à l'adresse https://lamesniedesmercenaires.fr/.
 
 > GitHub Pages est gratuit pour un dépôt **public**. Le contenu du dossier (textes, photos) est donc visible de tous sur GitHub, comme sur le site lui-même.
 
-**Pour un autre membre qui reprend la maintenance** : installer Git (étape 1), demander à être ajouté comme collaborateur du dépôt (*Settings* > *Collaborators*), puis récupérer le site avec `git clone https://github.com/jelalanne/lamesniedesmercenaires.git`.
+**Pour un autre membre qui reprend la maintenance** : installer Git (étape 1), demander à être ajouté comme collaborateur du dépôt (*Settings* > *Collaborators*), puis récupérer le site avec `git clone https://github.com/lamesniedesmercenaires/lamesniedesmercenaires.git`.
 
 ### Mettre à jour le site en ligne
 
@@ -198,7 +198,7 @@ Get-Help .\scripts\deployer.ps1 -Full                            # aide complèt
 ## Fonctionnalités supplémentaires
 
 - **Préparation automatique des photos** (`scripts/deployer.ps1`) : réduction des photos trop grandes (1600 px pour la galerie, 500 px pour le bureau, réglables en haut du script), redressement des photos prises téléphone tourné, suppression des métadonnées (dont la position GPS) des photos réduites, création des miniatures et suppression de celles des photos retirées.
-- **Galerie générée automatiquement** : le script écrit la liste des photos dans `assets/js/galerie-data.js`, avec les légendes de `legendes.txt` ou déduites du nom de fichier. La visionneuse s'utilise à la souris, au doigt ou au clavier (flèches, Échap).
+- **Galerie générée automatiquement** : le script écrit la liste des photos dans `assets/js/galerie-data.js`, avec les légendes de `legendes.txt` ou déduites du nom de fichier. Les photos gardent leur format d'origine (aucun recadrage) : les vignettes ont toutes la même hauteur et sont centrées sur plusieurs lignes. La visionneuse s'utilise à la souris, au doigt ou au clavier (flèches, Échap).
 - **Objet du message présélectionné** : un lien vers `contact.html?objet=prestation` (ou `adhesion`, `informations`, `autre`) présélectionne l'objet du formulaire. C'est le cas des boutons « Demander un devis » et « Nous écrire ». Les valeurs possibles sont les attributs `data-raccourci` du menu « Objet » dans `contact.html`.
 - **Protection anti-spam** du formulaire : champ piège invisible (filtré par Web3Forms).
 - **En-tête et pied de page communs** : générés par `assets/js/commun.js`, donc une modification du menu ou des réseaux s'applique à toutes les pages.
