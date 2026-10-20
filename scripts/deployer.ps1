@@ -63,6 +63,12 @@ $FichierJeton      = Join-Path $Racine '.cle\jeton.json'
 $GitPortable = Join-Path $Racine 'outils\git\cmd\git.exe'
 $Git = if (Test-Path -LiteralPath $GitPortable) { $GitPortable } else { 'git' }
 
+# Autorise Git à travailler dans ce dossier même si son propriétaire est invérifiable
+# (cas d'une clé USB en FAT/exFAT). Réglage transmis à git par variables d'environnement.
+$env:GIT_CONFIG_COUNT = '1'
+$env:GIT_CONFIG_KEY_0 = 'safe.directory'
+$env:GIT_CONFIG_VALUE_0 = '*'
+
 . (Join-Path $PSScriptRoot 'identifiants.ps1')
 
 $ExtensionsReductibles = @('.jpg', '.jpeg', '.png')
@@ -337,9 +343,9 @@ function Set-AuthentificationGitHub {
 
     # En-tête d'authentification HTTPS ajouté par git à chaque échange avec GitHub
     $base64 = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("x-access-token:$jeton"))
-    $env:GIT_CONFIG_COUNT = '1'
-    $env:GIT_CONFIG_KEY_0 = 'http.https://github.com/.extraheader'
-    $env:GIT_CONFIG_VALUE_0 = "AUTHORIZATION: basic $base64"
+    $env:GIT_CONFIG_COUNT = '2'
+    $env:GIT_CONFIG_KEY_1 = 'http.https://github.com/.extraheader'
+    $env:GIT_CONFIG_VALUE_1 = "AUTHORIZATION: basic $base64"
 }
 
 function Sync-Site {

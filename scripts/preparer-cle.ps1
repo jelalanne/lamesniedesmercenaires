@@ -310,9 +310,10 @@ function Initialize-Cle {
         Write-Info 'Récupération du site depuis GitHub...'
         Invoke-GitMuet -Git $git -Arguments @('clone', '--quiet', $Depot, $DossierSite) -Erreur 'La récupération du site a échoué.'
         if (-not (Test-Path -LiteralPath (Join-Path $DossierSite '.git'))) { throw 'La récupération du site a échoué.' }
-        # Auteur des commits publiés depuis la clé
-        Invoke-GitMuet -Git $git -Arguments @('-C', $DossierSite, 'config', 'user.name', $NomAuteur) -Erreur 'Réglage de Git impossible.'
-        Invoke-GitMuet -Git $git -Arguments @('-C', $DossierSite, 'config', 'user.email', $EmailAuteur) -Erreur 'Réglage de Git impossible.'
+        # Auteur des commits publiés depuis la clé. safe.directory : Git ne peut pas vérifier le
+        # propriétaire d'un dossier sur clé USB (FAT/exFAT) et refuserait d'y travailler
+        Invoke-GitMuet -Git $git -Arguments @('-c', 'safe.directory=*', '-C', $DossierSite, 'config', 'user.name', $NomAuteur) -Erreur 'Réglage de Git impossible.'
+        Invoke-GitMuet -Git $git -Arguments @('-c', 'safe.directory=*', '-C', $DossierSite, 'config', 'user.email', $EmailAuteur) -Erreur 'Réglage de Git impossible.'
         Write-Ok 'Site copié.'
 
         Write-Info 'Copie de Git portable sur la clé (c''est l''étape la plus longue)...'
