@@ -7,12 +7,12 @@
 # Les lignes qui commencent par # sont ignorées.
 # Après modification, lancer apercu.bat ou deployer.bat.
 
-01-la-mesnie-au-complet.jpg | La Mesnie au complet
-02-vaisselle-de-bois-au-campement.jpg | Vaisselle de bois au campement
-03-campement-au-pied-du-chateau.jpg | Campement au pied du château
-04-campement-dans-la-brume.jpg | Campement au-dessus de la brume
-05-campement-au-crepuscule.jpg | Campement au crépuscule
-06-tir-dans-les-souterrains.jpg | Tir dans les souterrains
-07-tir-a-l-arc-long.jpg | Tir à l'arc long
-08-cible-sur-les-remparts.jpg | Cible sur les remparts
-09-tir-assis-sur-les-remparts.jpg | Tir assis sur les remparts
+01-la-mesnie-au-complet.jpg | AG 2026
+02-vaisselle-de-bois-au-campement.jpg | Vaisselle propre et rangée !
+03-campement-au-pied-du-chateau.jpg | Tournoi de Murol 2025
+04-campement-dans-la-brume.jpg | Camp au tournoi d'Usson
+05-campement-au-crepuscule.jpg | Camp au tournoi d'Usson
+06-tir-dans-les-souterrains.jpg | Tir au zombie dans le noir
+07-tir-a-l-arc-long.jpg | Hoël des Bois
+08-cible-sur-les-remparts.jpg | Tournoi de Polignac
+09-tir-assis-sur-les-remparts.jpg | Pas facile celle là - Polignac
