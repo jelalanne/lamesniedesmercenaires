@@ -71,6 +71,32 @@ function Wait-Touche {
 
 # --- Étapes -------------------------------------------------------------------
 
+function Get-CleUsbBranchee {
+    <#
+    .SYNOPSIS
+        Liste les lecteurs des clés et disques USB branchés, sans les disques système.
+    .DESCRIPTION
+        Garde les lecteurs amovibles et ceux des disques reliés en USB, puis écarte le lecteur
+        de Windows et tout disque de démarrage ou système.
+    .OUTPUTS
+        Objets Win32_LogicalDisk (DeviceID, VolumeName, Size).
+    #>
+    $lettresUsb = @()
+    $disquesSysteme = @()
+    if (Get-Command Get-Disk -ErrorAction SilentlyContinue) {
+        foreach ($disque in Get-Disk) {
+            $lettres = @($disque | Get-Partition -ErrorAction SilentlyContinue |
+                Where-Object { $_.DriveLetter } | ForEach-Object { "$($_.DriveLetter):" })
+            if ($disque.IsSystem -or $disque.IsBoot) { $disquesSysteme += $lettres }
+            elseif ($disque.BusType -eq 'USB') { $lettresUsb += $lettres }
+        }
+    }
+
+    Get-CimInstance Win32_LogicalDisk |
+        Where-Object { $_.DriveType -eq 2 -or $lettresUsb -contains $_.DeviceID } |
+        Where-Object { $_.DeviceID -ne $env:SystemDrive -and $disquesSysteme -notcontains $_.DeviceID }
+}
+
 function Select-CleUsb {
     <#
     .SYNOPSIS
@@ -85,7 +111,7 @@ function Select-CleUsb {
         Write-Info '  - la préparation dure en général 5 à 10 minutes ;'
         Write-Info '  - TOUT le contenu de la clé choisie sera effacé.'
         Write-Host ''
-        $cles = @(Get-CimInstance Win32_LogicalDisk -Filter 'DriveType = 2')
+        $cles = @(Get-CleUsbBranchee)
         if ($cles.Count -eq 0) {
             Write-Attention 'Aucune clé USB détectée.'
             Write-Info 'Branchez la clé, attendez quelques secondes puis appuyez sur Entrée.'
