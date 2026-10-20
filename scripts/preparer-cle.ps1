@@ -110,7 +110,7 @@ function Select-CleUsb {
         Write-Titre 'Étape 1 sur 4 : choisir la clé USB'
         Write-Info 'Avant de commencer :'
         Write-Info '  - une connexion Internet est nécessaire pendant toute la préparation ;'
-        Write-Info '  - la préparation dure en général 5 à 10 minutes ;'
+        Write-Info '  - la préparation dure en général 15 à 20 minutes ;'
         Write-Info '  - TOUT le contenu de la clé choisie sera effacé.'
         Write-Host ''
         $cles = @(Get-CleUsbBranchee)
@@ -291,7 +291,7 @@ function Initialize-Cle {
         Mot de passe de publication.
     #>
     param([string]$Racine, [string]$Jeton, [string]$MotDePasse)
-    Write-Titre 'Étape 4 sur 4 : remplissage de la clé (5 à 10 minutes)'
+    Write-Titre 'Étape 4 sur 4 : remplissage de la clé (15 à 20 minutes)'
     Write-Info 'Ne retirez pas la clé et ne coupez pas Internet pendant cette étape.'
     Write-Host ''
     $DossierSite = Join-Path $Racine $NomDossier

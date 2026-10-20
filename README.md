@@ -218,7 +218,7 @@ Les raccourcis fonctionnent quelle que soit la lettre de la clé. Le script de p
 **Préparer une clé (une fois par clé)** :
 1. Publier d'abord les dernières modifications du site : la clé est remplie depuis GitHub.
 2. Une seule fois : créer un jeton sur le compte GitHub de la Mesnie : *Settings* > *Developer settings* > *Personal access tokens* > *Tokens (classic)* > *Generate new token (classic)*. *Expiration* : *No expiration* ; cocher uniquement la permission *repo*. Copier le jeton (`ghp_...`) : il ne sera plus affiché ensuite.
-3. Brancher la clé, puis double-cliquer sur `preparer-cle.bat` et suivre les 4 étapes à l'écran : choix de la clé, jeton (vérifié auprès de GitHub), mot de passe de publication, remplissage de la clé (Git portable est téléchargé automatiquement). Une connexion Internet est nécessaire (5 à 10 minutes en général). **Tout le contenu de la clé est effacé**, après confirmation et une fois le jeton et le mot de passe vérifiés.
+3. Brancher la clé, puis double-cliquer sur `preparer-cle.bat` et suivre les 4 étapes à l'écran : choix de la clé, jeton (vérifié auprès de GitHub), mot de passe de publication, remplissage de la clé (Git portable est téléchargé automatiquement). Une connexion Internet est nécessaire (15 à 20 minutes en général). **Tout le contenu de la clé est effacé**, après confirmation et une fois le jeton et le mot de passe vérifiés.
 
 Pour modifier le mode d'emploi : éditer `scripts/cle/mode-emploi.html`, l'ouvrir dans Edge, *Imprimer* > *Enregistrer au format PDF* (sans en-têtes ni pieds de page) et remplacer `scripts/cle/Mode d'emploi.pdf`.
 
