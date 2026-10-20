@@ -7,6 +7,12 @@
 # Les lignes qui commencent par # sont ignorées.
 # Après modification, lancer apercu.bat ou deployer.bat.
 
-exemple-1-cible.svg | Une cible d'archerie (image d'exemple)
-exemple-2-campement.svg | Notre campement (image d'exemple)
-exemple-3-tournoi.svg | Le pas de tir d'un tournoi (image d'exemple)
+01-la-mesnie-au-complet.jpg | La Mesnie au complet
+02-vaisselle-de-bois-au-campement.jpg | Vaisselle de bois au campement
+03-campement-au-pied-du-chateau.jpg | Campement au pied du château
+04-campement-dans-la-brume.jpg | Campement au-dessus de la brume
+05-campement-au-crepuscule.jpg | Campement au crépuscule
+06-tir-dans-les-souterrains.jpg | Tir dans les souterrains
+07-tir-a-l-arc-long.jpg | Tir à l'arc long
+08-cible-sur-les-remparts.jpg | Cible sur les remparts
+09-tir-assis-sur-les-remparts.jpg | Tir assis sur les remparts
