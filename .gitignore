@@ -5,3 +5,7 @@ desktop.ini
 
 # Fichiers temporaires du script de préparation des photos
 *.tmp
+
+# Clé USB du bureau : jeton chiffré et Git portable
+.cle/
+outils/

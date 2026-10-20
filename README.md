@@ -32,6 +32,7 @@ Aucune bibliothèque JavaScript externe n'est utilisée.
 6. [Mise en ligne sur GitHub Pages](#mise-en-ligne-sur-github-pages)
    - [Première mise en ligne](#première-mise-en-ligne)
    - [Mettre à jour le site en ligne](#mettre-à-jour-le-site-en-ligne)
+   - [Clés USB du bureau](#clés-usb-du-bureau)
 7. [Fonctionnalités supplémentaires](#fonctionnalités-supplémentaires)
 8. [Avant la première mise en ligne](#avant-la-première-mise-en-ligne)
 9. [Limites connues](#limites-connues)
@@ -56,6 +57,7 @@ SiteWeb/
 │   galerie.html, contact.html, mentions-legales.html, 404.html
 ├── apercu.bat              ← double-clic : prépare les photos et ouvre le site en local
 ├── deployer.bat            ← double-clic : prépare les photos et publie le site
+├── preparer-cle.bat        ← double-clic : prépare une clé USB pour le bureau
 ├── assets/
 │   ├── css/style.css       ← mise en page, couleurs, polices
 │   └── js/
@@ -71,7 +73,10 @@ SiteWeb/
 │       ├── legendes.txt    ← légendes des photos (facultatif)
 │       └── miniatures/     ← miniatures (GÉNÉRÉES par le script)
 └── scripts/
-    └── deployer.ps1        ← script de préparation des photos et de mise en ligne
+    ├── deployer.ps1        ← script de préparation des photos et de mise en ligne
+    ├── preparer-cle.ps1    ← prépare une clé USB pour le bureau
+    ├── cle/                ← mode d'emploi de la clé USB (source HTML et PDF)
+    └── identifiants.ps1    ← chiffrement du jeton GitHub des clés USB
 ```
 
 ## Voir le site sur son ordinateur
@@ -180,10 +185,11 @@ Pour changer l'adresse de réception, créer une nouvelle clé avec la nouvelle 
 Après toute modification (textes, photos, réglages) : **double-cliquer sur `deployer.bat`**.
 
 Le script :
-1. réduit les photos trop grandes (`images/bureau/` et `images/galerie/`) ;
-2. crée les miniatures et met à jour la liste des photos de la galerie ;
-3. enregistre les modifications (*commit*) et les envoie sur GitHub (*push*) ;
-4. GitHub Pages met le site à jour d'ici une à deux minutes.
+1. récupère d'abord les dernières publications (*pull*). En cas de conflit, il le résout seul en gardant les modifications faites sur ce PC ou cette clé ;
+2. réduit les photos trop grandes (`images/bureau/` et `images/galerie/`) ;
+3. crée les miniatures et met à jour la liste des photos de la galerie ;
+4. enregistre les modifications (*commit*), récupère à nouveau les éventuelles publications de dernière minute, puis les envoie sur GitHub (*push*) ;
+5. GitHub Pages met le site à jour d'ici une à deux minutes.
 
 La fenêtre reste ouverte à la fin : un message vert `Terminé.` confirme la réussite, un message rouge `ERREUR` explique le problème.
 
@@ -195,6 +201,29 @@ Options, depuis PowerShell dans le dossier du site :
 Get-Help .\scripts\deployer.ps1 -Full                            # aide complète du script
 ```
 
+### Clés USB du bureau
+
+Une clé USB préparée permet aux membres du bureau de mettre à jour les photos sans rien installer. Elle contient :
+
+| Élément | Rôle |
+|---|---|
+| `Code Source Site Web` | le site, avec Git portable (`outils/`) et le jeton GitHub chiffré (`.cle/`) |
+| `Photos de la galerie` | raccourci vers `images/galerie` |
+| `Photos du bureau` | raccourci vers `images/bureau` |
+| `Publier le site.bat` | prépare les photos et publie le site (demande le mot de passe de publication) |
+| `Mode d'emploi.pdf` | tutoriel pour le bureau (copie de `scripts/cle/Mode d'emploi.pdf`) |
+
+Les raccourcis fonctionnent quelle que soit la lettre de la clé. Le script de publication récupère d'abord les publications faites depuis une autre clé, puis publie.
+
+**Préparer une clé (une fois par clé)** :
+1. Publier d'abord les dernières modifications du site : la clé est remplie depuis GitHub.
+2. Une seule fois : créer un jeton sur le compte GitHub de la Mesnie : *Settings* > *Developer settings* > *Personal access tokens* > *Tokens (classic)* > *Generate new token (classic)*. *Expiration* : *No expiration* ; cocher uniquement la permission *repo*. Copier le jeton (`ghp_...`) : il ne sera plus affiché ensuite.
+3. Brancher la clé, puis double-cliquer sur `preparer-cle.bat` et suivre les 4 étapes à l'écran : choix de la clé, jeton (vérifié auprès de GitHub), mot de passe de publication, remplissage de la clé (Git portable est téléchargé automatiquement). Une connexion Internet est nécessaire (5 à 10 minutes en général). **Tout le contenu de la clé est effacé**, après confirmation et une fois le jeton et le mot de passe vérifiés.
+
+Pour modifier le mode d'emploi : éditer `scripts/cle/mode-emploi.html`, l'ouvrir dans Edge, *Imprimer* > *Enregistrer au format PDF* (sans en-têtes ni pieds de page) et remplacer `scripts/cle/Mode d'emploi.pdf`.
+
+Les dossiers `.cle/` et `outils/` ne sont jamais envoyés sur GitHub. Le jeton n'expire pas : en cas de perte d'une clé, le supprimer sur GitHub (*Tokens (classic)* > *Delete*), en créer un nouveau et préparer à nouveau les clés.
+
 ## Fonctionnalités supplémentaires
 
 - **Préparation automatique des photos** (`scripts/deployer.ps1`) : réduction des photos trop grandes (1600 px pour la galerie, 500 px pour le bureau, réglables en haut du script), redressement des photos prises téléphone tourné, suppression des métadonnées (dont la position GPS) des photos réduites, création des miniatures et suppression de celles des photos retirées.
@@ -203,6 +232,7 @@ Get-Help .\scripts\deployer.ps1 -Full                            # aide complèt
 - **Protection anti-spam** du formulaire : champ piège invisible (filtré par Web3Forms).
 - **En-tête et pied de page communs** : générés par `assets/js/commun.js`, donc une modification du menu ou des réseaux s'applique à toutes les pages.
 - **Mentions légales** et **page 404** personnalisée.
+- **Publication depuis une clé USB** : voir [Clés USB du bureau](#clés-usb-du-bureau).
 - **Affichage mobile** : mise en page adaptée aux petits écrans, menu repliable.
 - **Agrandissement sur grand écran** : à partir de 1140 px de large, tout le site s'affiche à 150 % (comme un zoom navigateur). Le facteur se règle avec la variable `--zoom` dans `assets/css/style.css`.
 

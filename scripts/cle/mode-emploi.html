@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Mode d'emploi de la clé USB du site</title>
+<style>
+  @page { size: A4; margin: 18mm 20mm; }
+  body { font-family: Georgia, "Times New Roman", serif; font-size: 12pt; line-height: 1.5; color: #2b1e12; }
+  h1 { color: #7a1c1c; font-size: 22pt; margin: 0 0 4pt; }
+  h2 { color: #7a1c1c; font-size: 15pt; margin: 20pt 0 6pt; border-bottom: 1px solid #b8903f; padding-bottom: 2pt; }
+  .sous-titre { font-style: italic; color: #5a4632; margin-bottom: 14pt; }
+  ol li, ul li { margin-bottom: 5pt; }
+  .fichier { font-family: Consolas, monospace; background: #f4ead3; padding: 1pt 4pt; border-radius: 3pt; }
+  .encadre { border: 1px solid #b8903f; background: #faf4e6; padding: 8pt 12pt; border-radius: 4pt; margin: 10pt 0; }
+  table { border-collapse: collapse; width: 100%; }
+  td { border: 1px solid #e3d1aa; padding: 5pt 8pt; vertical-align: top; }
+  td:first-child { width: 38%; }
+</style>
+</head>
+<body>
+
+<h1>Mode d'emploi de la clé USB</h1>
+<p class="sous-titre">Mettre à jour les photos du site de La Mesnie Des Mercenaires</p>
+
+<h2>Contenu de la clé</h2>
+<table>
+  <tr><td><span class="fichier">Photos de la galerie</span></td><td>Ouvre le dossier des photos affichées sur la page Galerie.</td></tr>
+  <tr><td><span class="fichier">Photos du bureau</span></td><td>Ouvre le dossier des photos des membres du bureau.</td></tr>
+  <tr><td><span class="fichier">Publier le site</span></td><td>Prépare les photos et met le site à jour sur Internet.</td></tr>
+  <tr><td><span class="fichier">Code Source Site Web</span></td><td>Le site lui-même. Ne rien y modifier ni supprimer.</td></tr>
+  <tr><td><span class="fichier">Mode d'emploi</span></td><td>Ce document.</td></tr>
+</table>
+
+<h2>Ajouter des photos à la galerie</h2>
+<ol>
+  <li>Brancher la clé et l'ouvrir.</li>
+  <li>Double-cliquer sur <span class="fichier">Photos de la galerie</span>.</li>
+  <li>Copier les nouvelles photos dans ce dossier (formats <b>.jpg</b> ou <b>.png</b>). Pas besoin de les réduire : le site s'en charge.</li>
+  <li>Pour retirer une photo du site, il suffit de la supprimer de ce dossier.</li>
+  <li>Ne pas toucher au dossier <span class="fichier">miniatures</span> : il est rempli automatiquement.</li>
+  <li>Faire ensuite <b>Publier le site</b> (voir plus bas).</li>
+</ol>
+
+<div class="encadre">
+  <b>Légendes (facultatif)</b> — sans rien faire, la légende est tirée du nom du fichier :
+  <span class="fichier">tournoi-de-juin.jpg</span> donne «&nbsp;Tournoi de juin&nbsp;».
+  Pour écrire une autre légende, ouvrir le fichier <span class="fichier">legendes.txt</span> du dossier et ajouter une ligne
+  <span class="fichier">nom-du-fichier.jpg | Ma légende</span>.
+</div>
+
+<h2>Changer la photo d'un membre du bureau</h2>
+<ol>
+  <li>Double-cliquer sur <span class="fichier">Photos du bureau</span>.</li>
+  <li>Remplacer la photo voulue par la nouvelle, <b>en gardant exactement le même nom de fichier</b>
+      (par exemple <span class="fichier">president.jpg</span>).</li>
+  <li>Faire ensuite <b>Publier le site</b>.</li>
+</ol>
+
+<h2>Publier le site</h2>
+<ol>
+  <li>Vérifier que l'ordinateur est connecté à Internet.</li>
+  <li>Double-cliquer sur <span class="fichier">Publier le site</span>. Une fenêtre noire s'ouvre.</li>
+  <li>Quand le <b>mot de passe de publication</b> est demandé, le taper puis appuyer sur Entrée.
+      <b>Rien ne s'affiche pendant la saisie, c'est normal.</b></li>
+  <li>Attendre le message vert <b>Terminé.</b>, puis appuyer sur une touche pour fermer la fenêtre.</li>
+  <li>Le site est à jour sur <b>lamesniedesmercenaires.fr</b> une à deux minutes plus tard
+      (actualiser la page avec Ctrl + F5 si les anciennes photos s'affichent encore).</li>
+</ol>
+
+<h2>En cas de problème</h2>
+<ul>
+  <li><b>«&nbsp;Mot de passe incorrect&nbsp;»</b> : vérifier la touche Verr. Maj et réessayer (3 essais par lancement).</li>
+  <li><b>Windows affiche «&nbsp;Windows a protégé votre ordinateur&nbsp;»</b> : cliquer sur «&nbsp;Informations complémentaires&nbsp;» puis «&nbsp;Exécuter quand même&nbsp;».</li>
+  <li><b>Un message rouge «&nbsp;ERREUR&nbsp;»</b> : faire une photo de la fenêtre et l'envoyer au responsable du site. Les photos ne sont pas perdues.</li>
+  <li><b>Toujours retirer la clé proprement</b> (icône de la clé en bas à droite, «&nbsp;Éjecter&nbsp;») pour ne pas abîmer son contenu.</li>
+</ul>
+
+</body>
+</html>
