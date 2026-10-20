@@ -259,22 +259,23 @@ function Read-NouveauMotDePasse {
 function New-RaccourciRelatif {
     <#
     .SYNOPSIS
-        Crée un raccourci .lnk qui ouvre un dossier désigné par un chemin relatif à la clé.
+        Crée un raccourci .lnk vers un dossier de la clé, qui s'ouvre dans la même fenêtre.
+    .DESCRIPTION
+        Le raccourci contient le chemin complet du dossier et un chemin relatif au raccourci :
+        si la clé change de lettre sur un autre PC, Windows retrouve le dossier grâce au second.
     .PARAMETER Fichier
         Chemin complet du raccourci à créer (.lnk).
     .PARAMETER CheminRelatif
         Dossier à ouvrir, relatif au dossier du raccourci.
     .PARAMETER Icone
-        Icône du raccourci (fichier,index).
+        Fichier d'icône.
+    .PARAMETER IndexIcone
+        Numéro de l'icône dans ce fichier.
     #>
-    param([string]$Fichier, [string]$CheminRelatif, [string]$Icone)
-    # Sans dossier de démarrage, cmd démarre dans le dossier du raccourci : le chemin relatif suit la clé
+    param([string]$Fichier, [string]$CheminRelatif, [string]$Icone, [int]$IndexIcone)
     $raccourci = (New-Object -ComObject WScript.Shell).CreateShortcut($Fichier)
-    $raccourci.TargetPath = '%ComSpec%'
-    $raccourci.Arguments = "/c start `"`" `"$CheminRelatif`""
-    $raccourci.WorkingDirectory = ''
-    $raccourci.WindowStyle = 7
-    $raccourci.IconLocation = $Icone
+    $raccourci.TargetPath = Join-Path (Split-Path -Parent $Fichier) $CheminRelatif
+    $raccourci.IconLocation = "$Icone,$IndexIcone"
     $raccourci.Save()
 }
 
@@ -324,9 +325,9 @@ function Initialize-Cle {
         Write-Ok 'Jeton enregistré (chiffré).'
 
         New-RaccourciRelatif -Fichier (Join-Path $Racine 'Photos de la galerie.lnk') `
-            -CheminRelatif "$NomDossier\images\galerie" -Icone '%SystemRoot%\System32\imageres.dll,108'
+            -CheminRelatif "$NomDossier\images\galerie" -Icone "$env:SystemRoot\System32\imageres.dll" -IndexIcone 108
         New-RaccourciRelatif -Fichier (Join-Path $Racine 'Photos du bureau.lnk') `
-            -CheminRelatif "$NomDossier\images\bureau" -Icone '%SystemRoot%\System32\imageres.dll,117'
+            -CheminRelatif "$NomDossier\images\bureau" -Icone "$env:SystemRoot\System32\imageres.dll" -IndexIcone 117
         $lanceur = "@echo off`r`n" +
             "rem Prepare les photos et publie le site. Voir le Mode d'emploi.`r`n" +
             "powershell -NoProfile -ExecutionPolicy Bypass -File `"%~dp0$NomDossier\scripts\deployer.ps1`"`r`n" +
