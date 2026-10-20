@@ -94,7 +94,9 @@ function Get-CleUsbBranchee {
 
     Get-CimInstance Win32_LogicalDisk |
         Where-Object { $_.DriveType -eq 2 -or $lettresUsb -contains $_.DeviceID } |
-        Where-Object { $_.DeviceID -ne $env:SystemDrive -and $disquesSysteme -notcontains $_.DeviceID }
+        Where-Object { $_.DeviceID -ne $env:SystemDrive -and $disquesSysteme -notcontains $_.DeviceID } |
+        # Lecteurs sans support (emplacements vides d'un lecteur de cartes) écartés
+        Where-Object { $_.Size -gt 0 }
 }
 
 function Select-CleUsb {
