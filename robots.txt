@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /scripts/
+
+Sitemap: https://lamesniedesmercenaires.fr/sitemap.xml

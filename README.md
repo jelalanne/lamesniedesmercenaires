@@ -58,6 +58,8 @@ SiteWeb/
 ├── apercu.bat              ← double-clic : prépare les photos et ouvre le site en local
 ├── deployer.bat            ← double-clic : prépare les photos et publie le site
 ├── preparer-cle.bat        ← double-clic : prépare une clé USB pour le bureau
+├── robots.txt              ← référencement : indique le plan du site aux moteurs de recherche
+├── sitemap.xml             ← plan du site : pages et photos à indexer (GÉNÉRÉ par le script)
 ├── assets/
 │   ├── css/style.css       ← mise en page, couleurs, polices
 │   └── js/
@@ -187,7 +189,7 @@ Après toute modification (textes, photos, réglages) : **double-cliquer sur `de
 Le script :
 1. récupère d'abord les dernières publications (*pull*). En cas de conflit, il le résout seul en gardant les modifications faites sur ce PC ou cette clé ;
 2. réduit les photos trop grandes (`images/bureau/` et `images/galerie/`) ;
-3. crée les miniatures et met à jour la liste des photos de la galerie ;
+3. crée les miniatures, met à jour la liste des photos de la galerie et le plan du site (`sitemap.xml`) ;
 4. enregistre les modifications (*commit*), récupère à nouveau les éventuelles publications de dernière minute, puis les envoie sur GitHub (*push*) ;
 5. GitHub Pages met le site à jour d'ici une à deux minutes.
 
@@ -232,6 +234,11 @@ Les dossiers `.cle/` et `outils/` ne sont jamais envoyés sur GitHub. Le jeton n
 - **Protection anti-spam** du formulaire : champ piège invisible (filtré par Web3Forms).
 - **En-tête et pied de page communs** : générés par `assets/js/commun.js`, donc une modification du menu ou des réseaux s'applique à toutes les pages.
 - **Mentions légales** et **page 404** personnalisée.
+- **Référencement** :
+  - `sitemap.xml` est régénéré par `deployer.ps1` à chaque publication : pages du site et photos de la galerie (pour Google Images). Pour une nouvelle page, l'ajouter à `$PagesSitemap` en haut du script. `robots.txt` indique ce plan aux moteurs de recherche.
+  - Chaque page indexée a un titre et une description ciblés (archerie médiévale, Auvergne), une adresse canonique (`<link rel="canonical">`) et un aperçu pour les partages sur les réseaux sociaux (balises `og:`).
+  - Données structurées (blocs `application/ld+json`) : fiche de l'association et du site sur l'accueil (adresse, date de création, logo, réseaux sociaux dans `sameAs`), catalogue des prestations, fil d'Ariane sur les autres pages. Si un lien de réseau social change dans `config.js`, le changer aussi dans le bloc de l'accueil ; si une prestation change, mettre à jour le bloc de `prestations.html`.
+  - Site déclaré dans [Google Search Console](https://search.google.com/search-console) pour suivre son indexation.
 - **Publication depuis une clé USB** : voir [Clés USB du bureau](#clés-usb-du-bureau).
 - **Affichage mobile** : mise en page adaptée aux petits écrans, menu repliable.
 - **Agrandissement sur grand écran** : à partir de 1140 px de large, tout le site s'affiche à 150 % (comme un zoom navigateur). Le facteur se règle avec la variable `--zoom` dans `assets/css/style.css`.

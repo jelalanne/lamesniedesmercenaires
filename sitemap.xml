@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fichier généré automatiquement par scripts/deployer.ps1 : ne pas le modifier à la main. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://lamesniedesmercenaires.fr/</loc>
+    <image:image><image:loc>https://lamesniedesmercenaires.fr/images/logo.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://lamesniedesmercenaires.fr/association.html</loc>
+  </url>
+  <url>
+    <loc>https://lamesniedesmercenaires.fr/prestations.html</loc>
+  </url>
+  <url>
+    <loc>https://lamesniedesmercenaires.fr/galerie.html</loc>
+    <image:image><image:loc>https://lamesniedesmercenaires.fr/images/galerie/01-la-mesnie-au-complet.jpg</image:loc></image:image>
+    <image:image><image:loc>https://lamesniedesmercenaires.fr/images/galerie/02-vaisselle-de-bois-au-campement.jpg</image:loc></image:image>
+    <image:image><image:loc>https://lamesniedesmercenaires.fr/images/galerie/03-campement-au-pied-du-chateau.jpg</image:loc></image:image>
+    <image:image><image:loc>https://lamesniedesmercenaires.fr/images/galerie/04-campement-dans-la-brume.jpg</image:loc></image:image>
+    <image:image><image:loc>https://lamesniedesmercenaires.fr/images/galerie/05-campement-au-crepuscule.jpg</image:loc></image:image>
+    <image:image><image:loc>https://lamesniedesmercenaires.fr/images/galerie/06-tir-dans-les-souterrains.jpg</image:loc></image:image>
+    <image:image><image:loc>https://lamesniedesmercenaires.fr/images/galerie/07-tir-a-l-arc-long.jpg</image:loc></image:image>
+    <image:image><image:loc>https://lamesniedesmercenaires.fr/images/galerie/08-cible-sur-les-remparts.jpg</image:loc></image:image>
+    <image:image><image:loc>https://lamesniedesmercenaires.fr/images/galerie/09-tir-assis-sur-les-remparts.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://lamesniedesmercenaires.fr/contact.html</loc>
+  </url>
+</urlset>

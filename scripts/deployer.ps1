@@ -7,7 +7,8 @@
     2. Réduit les photos trop grandes du bureau (images/bureau) et de la galerie (images/galerie).
     3. Crée les miniatures de la galerie (images/galerie/miniatures) et supprime celles des photos retirées.
     4. Régénère la liste des photos de la page Galerie (assets/js/galerie-data.js), avec les
-       légendes de images/galerie/legendes.txt ou, à défaut, déduites du nom de chaque fichier.
+       légendes de images/galerie/legendes.txt ou, à défaut, déduites du nom de chaque fichier,
+       puis le plan du site sitemap.xml (pages et photos de la galerie).
     5. Publie le site sur GitHub : git add, git commit, git pull puis git push (sauf avec -SansDeploiement).
        Sur une clé USB préparée par preparer-cle.ps1, utilise Git portable et demande le mot de passe
        qui déchiffre le jeton GitHub de la Mesnie.
@@ -57,6 +58,11 @@ $DossierGalerie    = Join-Path $Racine 'images\galerie'
 $DossierMiniatures = Join-Path $DossierGalerie 'miniatures'
 $FichierLegendes   = Join-Path $DossierGalerie 'legendes.txt'
 $FichierDonnees    = Join-Path $Racine 'assets\js\galerie-data.js'
+$FichierSitemap    = Join-Path $Racine 'sitemap.xml'
+
+# Pages listées dans sitemap.xml (adresse relative à $AdresseSite)
+$AdresseSite  = 'https://lamesniedesmercenaires.fr/'
+$PagesSitemap = @('', 'association.html', 'prestations.html', 'galerie.html', 'contact.html')
 $FichierJeton      = Join-Path $Racine '.cle\jeton.json'
 
 # Git portable de la clé USB s'il existe, sinon le Git installé sur le PC
@@ -311,7 +317,41 @@ function Update-Galerie {
         "window.GALERIE_PHOTOS = $json;`r`n"
     [IO.File]::WriteAllText($FichierDonnees, $contenu, (New-Object System.Text.UTF8Encoding -ArgumentList $false))
 
+    $script:PhotosGalerie = $entrees
     return $photos.Count
+}
+
+function Update-Sitemap {
+    <#
+    .SYNOPSIS
+        Régénère sitemap.xml : les pages de $PagesSitemap, avec les photos de la galerie
+        rattachées à galerie.html et le logo rattaché à l'accueil.
+    .DESCRIPTION
+        À appeler après Update-Galerie, qui fournit la liste des photos ($script:PhotosGalerie).
+    .EXAMPLE
+        Update-Sitemap
+    #>
+    $images = @{
+        ''             = @('images/logo.jpg')
+        'galerie.html' = @($script:PhotosGalerie | ForEach-Object { $_.image })
+    }
+
+    $lignes = @(
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<!-- Fichier généré automatiquement par scripts/deployer.ps1 : ne pas le modifier à la main. -->',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'
+    )
+    foreach ($page in $PagesSitemap) {
+        $lignes += '  <url>'
+        $lignes += "    <loc>$([Security.SecurityElement]::Escape($AdresseSite + $page))</loc>"
+        foreach ($image in @($images[$page])) {
+            if ($image) { $lignes += "    <image:image><image:loc>$([Security.SecurityElement]::Escape($AdresseSite + $image))</image:loc></image:image>" }
+        }
+        $lignes += '  </url>'
+    }
+    $lignes += '</urlset>'
+
+    [IO.File]::WriteAllText($FichierSitemap, ($lignes -join "`r`n") + "`r`n", (New-Object System.Text.UTF8Encoding -ArgumentList $false))
 }
 
 function Invoke-Git {
@@ -453,6 +493,10 @@ try {
     Write-Etape 'Miniatures et liste de la galerie'
     $nombrePhotos = Update-Galerie
     Write-Host "  $nombrePhotos photo(s) dans la galerie."
+
+    Write-Etape 'Plan du site pour les moteurs de recherche'
+    Update-Sitemap
+    Write-Host '  sitemap.xml mis à jour.'
 
     if (-not $SansDeploiement) {
         Write-Etape 'Publication sur GitHub'
